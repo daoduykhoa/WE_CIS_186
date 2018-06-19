@@ -1,0 +1,171 @@
+﻿@model WE_CIS_186.Models.CustomerInf
+@{
+    ViewBag.Title = "Danh sách khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.semanticui.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.semanticui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.js"></script>
+    <link href="~/Library/css/nice-select.css" rel="stylesheet" />
+    <script src="~/Library/js/jquery.nice-select.js"></script>
+    <link href="~/Library/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        tbody tr td {
+            color: black;
+        }
+    </style>
+    <script>
+        function showTable() {
+            $("#example").DataTable({
+                "processing": true,
+                "serverSide": false,
+                "pagingType": "full_numbers",
+                "ordering": true,
+                "info": true,
+                "searching": true,
+                "bFilter": false,
+                "sAjaxSource": '@Url.Action("LoadData", "Home")/@Model.Kangz',
+                "bDestroy": true,
+                "bLengthChange": true,
+                "bPaginate": true,
+                "sEmptyTable": "Loading data from server",
+                language: {
+                    "search": "Tìm kiếm:",
+                    "searchPlaceholder": "Nhập dữ liệu cần tìm",
+                    "loadingRecords": "Đang tải dữ liệu...",
+                    "processing": "Đang xử lý...",
+                    "emptyTable": "Không tìm thấy dữ liệu",
+                    "info": "Hiển thị _START_ đến _END_ trong tổng số _TOTAL_ dữ liệu",
+                    "infoEmpty": "Hiển thị 0 trong tổng số 0 dữ liệu",
+                    "infoFiltered": "(lọc từ tổng số _MAX_ dữ liệu)",
+                    "lengthMenu": "Hiển thị _MENU_ dữ liệu",
+                    "zeroRecords": "Không tìm thấy dữ liệu nào phù hợp",
+                    "paginate": {
+                        "first": "Đầu",
+                        "last": "Cuối",
+                        "next": "Tiếp theo",
+                        "previous": "Trước đó"
+                    },
+                },
+                "columns": [
+                    { "render": function (data, type, row) { return row[0]; } },
+                    { "render": function (data, type, row) { return (row[1]); } },
+                    { "render": function (data, type, row) { return (row[2]); } },
+                    { "render": function (data, type, row) { return (row[3]); } },
+                    { "render": function (data, type, row) { return (row[4]); } },
+                    { "render": function (data, type, row) { return (row[5]); } },
+                ],
+                rowCallback: function (row, data, index) {
+                    @*if (data[8] == 0) {
+                        $(row).find('td:eq(4)').text("").addClass('fa fa-close').css({ 'background': '@Session["Clr0"]', 'display': 'block', 'text-align': 'center' });
+                    }
+                    if (data[8] == 1) {
+                        $(row).find('td:eq(4)').text("").addClass('fa fa-check').css({ 'background': '@Session["Clr1"]', 'display': 'block', 'text-align': 'center' });
+                    }
+                    if (data[3] == "True") {
+                        $(row).find('td:eq(2)').text("").addClass('fa fa-male').css({ 'display': 'block', 'text-align': 'center'});
+                    }
+                    else {
+                        $(row).find('td:eq(2)').text("").addClass('fa fa-female').css({ 'display': 'block', 'text-align': 'center' });
+                    }*@
+                }
+            });
+        }
+        $(document).ready(function () {
+            $('select').niceSelect();
+        });
+        $(document).ready(function () {
+            showTable();
+            $("#listTime").change(function () {
+                var time = $("#listTime").val();
+                var redirectURL = '@Url.Action("CustomerList", "Home")';
+                window.location.href = 'http://localhost:37935/Home/CustomerList/' + time;
+                //showTable();
+            });
+        });
+    </script>
+</head>
+
+<div class="col-lg-10" id="centerDadiv">
+    <div class="card">
+                <p class="page-titles">Danh sách khách hàng - Tháng @Model.Kangz</p>
+            <div id="example_length">
+                <select id="listTime">
+                    <option>--Tháng--</option>
+                    @{
+                        WE_CIS_186.Models.wenevaescapeEntities db = new WE_CIS_186.Models.wenevaescapeEntities();
+                        var listSel = db.CustomerInfs.ToList();
+                        foreach (var item in listSel)
+                        {
+                            <option>@item.Kangz</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-lg-12">
+                <table id="example" class="table table-hover table-bordered dataTable" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Họ tên</th>
+                            <th style="text-align: center">Ngày sinh</th>
+                            <th style="text-align: center">Số điện thoại</th>
+                            <th style="text-align: center">Email</th>
+                            <th style="text-align: center">Địa chỉ</th>
+                            <th style="text-align: center">PreCode</th>
+                        </tr>
+                    </thead>
+                </table>
+        </div>
+    </div>
+</div>
+
+@*<div class=" col-lg-10" style="position:fixed;
+        top: 50%;
+        left: 50%;
+        margin: 0 auto">
+        <div class="container-fluid">
+            <div class="card col-lg-7">
+                <div style="margin-left: 12px" class="row">
+                    <div class="row page-titles">
+                        <p>Danh sách khách hàng - Tháng @Model.Kangz</p>
+                    </div>
+                    <br />
+                    <hr />
+                    <div id="example_length">
+                        <select id="listTime">
+                            <option>--Tháng--</option>
+                            @{
+                                WE_CIS_186.Models.wenevaescapeEntities db = new WE_CIS_186.Models.wenevaescapeEntities();
+                                var listSel = db.CustomerInfs.ToList();
+                                foreach (var item in listSel)
+                                {
+                                    <option>@item.Kangz</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <hr />
+                    <div class="col-lg-10">
+                        <table id="example" class="table table-hover table-bordered dataTable" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">Họ tên</th>
+                                    <th style="text-align: center">Ngày sinh</th>
+                                    <th style="text-align: center">Số điện thoại</th>
+                                    <th style="text-align: center">Email</th>
+                                    <th style="text-align: center">Địa chỉ</th>
+                                    <th style="text-align: center">PreCode</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
