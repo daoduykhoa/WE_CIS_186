@@ -228,6 +228,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>CISModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserValidate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
