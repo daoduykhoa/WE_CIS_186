@@ -1,12 +1,16 @@
 ﻿/* WE ESCAPE CUSTOMER INFORMATION SYSTEM */
-
-
-
+body {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 .fancybackground {
     background-image: url('../images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
+    background-position: center;
 }
 .enjoy-css {
     display: inline-block;
@@ -136,7 +140,7 @@
         font-size: 12px;
         letter-spacing: 1px;
         text-decoration: none;
-        color: #dddddd;
+        color: #FAD766;
         font-weight: 700;
         text-transform: uppercase;
     }
@@ -542,7 +546,7 @@ table {
     position: relative;
 }
 .tbl-content {
-    height: 300px;
+    height: 90%;
     overflow-x: auto;
     margin-top: 0px;
     border: 1px solid rgba(255,255,255,0.3);

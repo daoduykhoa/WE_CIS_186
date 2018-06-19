@@ -12,18 +12,11 @@ namespace WE_CIS_186.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerInf
+    public partial class User
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string DoB { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Misc { get; set; }
-        public string PreCode { get; set; }
-        public string Month { get; set; }
-        public string Year { get; set; }
-        public string Days { get; set; }
+        public int id { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public int role { get; set; }
     }
 }

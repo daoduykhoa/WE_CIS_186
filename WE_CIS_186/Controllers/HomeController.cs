@@ -53,7 +53,9 @@ namespace WE_CIS_186.Controllers
                     littleBunny.DoB = wes.DoB;
                     littleBunny.Address = wes.Address;
                     littleBunny.PreCode = wes.PreCode;
-                    littleBunny.Kangz = DateTime.Now.ToString("MM");
+                    littleBunny.Month = DateTime.Now.ToString("MM");
+                    littleBunny.Year = DateTime.Now.ToString("yyyy");
+                    littleBunny.Days = DateTime.Now.Day.ToString();
                     littleCat.CustomerInfs.Add(littleBunny);
                     littleCat.SaveChanges();
                     //}
@@ -65,9 +67,9 @@ namespace WE_CIS_186.Controllers
             return View("Index", new Customer());
         }
 
-        public ActionResult CustomerList(string id)
+        public ActionResult CustomerList(string id ,string e)
         {
-            var records = db.CustomerInfs.Where(x => x.Kangz == id).ToList();
+            var records = db.CustomerInfs.Where(x => x.Year == id && x.Month == e).ToList();
             return View(records);
         }
         //public ActionResult LoadData(string id)

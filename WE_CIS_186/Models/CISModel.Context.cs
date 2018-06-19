@@ -26,5 +26,6 @@ namespace WE_CIS_186.Models
         }
     
         public virtual DbSet<CustomerInf> CustomerInfs { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

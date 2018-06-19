@@ -9,29 +9,30 @@
     <link rel="stylesheet" type="text/css" href="~/Library/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="~/Library/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="~/Library/vendor/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="~/Library/vendor/css-hamburgers/hamburgers.min.css"> 
+    <link rel="stylesheet" type="text/css" href="~/Library/vendor/css-hamburgers/hamburgers.min.css">
     <link rel="stylesheet" type="text/css" href="~/Library/css/util.css">
     <link rel="stylesheet" type="text/css" href="~/Library/css/main.css">
     <link rel="stylesheet" type="text/css" href="~/Library/css/style.css" />
+    <script src="~/Library/jquery-nice-select-1.1.0/js/jquery.js"></script>
+    <script src="~/Library/js/jquery.min.js"></script>
+    <script src="~/Library/js/jquery.min.js"></script>
     <title>@ViewBag.Title - CIS</title>
+    <script>
+        $("a.kk").click(function () {
+            alert("audio Here");
+        });
+    </script>
 </head>
-<body class="fancybackground">
-    <div id='cssmenu'>
+<body class="">
+    <div id='cssmenu' class="fixedElement">
         <ul class="x" style="display: flex; justify-content: center">
-            <li style="text-align:center"><a href='/Home/Index'>Trang chủ</a></li>
-            <li class="btn">
-                <a class='active' href='/Home/CustomerList/06'>DSKH Tháng</a>
-            </li>
-            <li style="text-align:center"><a href='/Home/About'>About</a></li>
+            <li style="text-align: center"><a href='/Home/Index'>Trang chủ</a></li>
+            <li style="text-align: center"><a class="kk" href='#'>Danh sách khách hàng</a></li>
+            <li style="text-align: center"><a href='/Home/About'>About</a></li>
         </ul>
     </div>
     <div style="width: 100%;height:1px;background-color:white"></div>
-    <div class="fancybackground"></div>
     @RenderBody()
     @RenderSection("scripts", required: false)
-
-
-
-
 </body>
 </html>
