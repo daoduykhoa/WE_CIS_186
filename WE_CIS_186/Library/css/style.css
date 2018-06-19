@@ -73,9 +73,6 @@
         transition: all 30ms cubic-bezier(0.42, 0, 0.58, 1);
     }
 
-
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
@@ -304,9 +301,6 @@
         left: 0;
         right: 0;
         margin: auto;
-    }
-    .customerlist {
-        width:;
     }
     #cssmenu {
         width: 100%;
@@ -557,10 +551,6 @@ td {
 
 
 /* demo styles */
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-
-
 section {
     margin: 50px;
     background: -webkit-linear-gradient(left, #25c481, #25b7c4);

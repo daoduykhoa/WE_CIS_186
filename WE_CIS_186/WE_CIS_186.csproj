@@ -236,7 +236,6 @@
     <Content Include="Library\css\main.css" />
     <Content Include="Library\css\nice-select.css" />
     <Content Include="Library\css\style.css" />
-    <Content Include="Library\css\style_sep.css" />
     <Content Include="Library\css\util.css" />
     <Content Include="Library\fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Library\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
