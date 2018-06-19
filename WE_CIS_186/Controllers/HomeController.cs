@@ -67,9 +67,9 @@ namespace WE_CIS_186.Controllers
             return View("Index", new Customer());
         }
 
-        public ActionResult CustomerList(string id ,string e)
+        public ActionResult CustomerList(string id)
         {
-            var records = db.CustomerInfs.Where(x => x.Year == id && x.Month == e).ToList();
+            var records = db.CustomerInfs.Where(x => x.Month == id).ToList();
             return View(records);
         }
         //public ActionResult LoadData(string id)
