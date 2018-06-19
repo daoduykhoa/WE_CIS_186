@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -26,6 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -196,6 +198,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Encrypt\EncryptS.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,12 +225,17 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\AddCustomer.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\User.cs">
+      <DependentUpon>CISModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserValidate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\loginStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -237,6 +246,33 @@
     <Content Include="Library\css\style.css" />
     <Content Include="Library\css\style_sep.css" />
     <Content Include="Library\css\util.css" />
+    <Content Include="Library\fontawesome\LICENSE.txt" />
+    <Content Include="Library\fontawesome\svg-with-js\css\fa-svg-with-js.css" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-brands.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-brands.min.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-regular.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-regular.min.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-solid.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-solid.min.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-v4-shims.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fa-v4-shims.min.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fontawesome-all.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fontawesome-all.min.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fontawesome.js" />
+    <Content Include="Library\fontawesome\svg-with-js\js\fontawesome.min.js" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fa-brands.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fa-brands.min.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fa-regular.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fa-regular.min.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fa-solid.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fa-solid.min.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fontawesome-all.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fontawesome-all.min.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fontawesome.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\css\fontawesome.min.css" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-brands-400.svg" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-regular-400.svg" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.svg" />
     <Content Include="Library\fonts\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Library\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Library\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
@@ -251,6 +287,7 @@
     <Content Include="Library\images\icons\map-marker.png" />
     <Content Include="Library\images\we-title.png" />
     <Content Include="Library\img\system\flavicon.png" />
+    <Content Include="Library\jquery-3.3.1.min.js" />
     <Content Include="Library\js\jquery.nice-select.js" />
     <Content Include="Library\js\main.js" />
     <Content Include="Library\js\map-custom.js" />
@@ -371,6 +408,56 @@
     <Content Include="Models\CISModel.edmx.diagram">
       <DependentUpon>CISModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\loginStyle.scss" />
+    <Content Include="Content\loginStyle.css.map" />
+    <Content Include="Library\fontawesome\README.md" />
+    <Content Include="Library\fontawesome\use-on-desktop\Font Awesome 5 Brands-Regular-400.otf" />
+    <Content Include="Library\fontawesome\use-on-desktop\Font Awesome 5 Free-Regular-400.otf" />
+    <Content Include="Library\fontawesome\use-on-desktop\Font Awesome 5 Free-Solid-900.otf" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\fa-brands.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\fa-regular.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\fa-solid.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\fontawesome.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_animated.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_bordered-pulled.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_core.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_fixed-width.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_icons.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_larger.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_list.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_mixins.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_rotated-flipped.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_screen-reader.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_stacked.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\less\_variables.less" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\fa-brands.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\fa-regular.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\fa-solid.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\fontawesome.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_animated.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_bordered-pulled.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_core.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_fixed-width.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_icons.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_larger.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_list.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_mixins.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_rotated-flipped.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_screen-reader.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_stacked.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\scss\_variables.scss" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-brands-400.eot" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-brands-400.ttf" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-brands-400.woff" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-brands-400.woff2" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-regular-400.eot" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-regular-400.ttf" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-regular-400.woff" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-regular-400.woff2" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.eot" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.ttf" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.woff" />
+    <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.woff2" />
     <None Include="Properties\PublishProfiles\wescis - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\wescis - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -413,6 +500,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\CustomerList.cshtml" />
+    <Content Include="Views\User\LoginPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -431,6 +519,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
@@ -438,6 +527,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

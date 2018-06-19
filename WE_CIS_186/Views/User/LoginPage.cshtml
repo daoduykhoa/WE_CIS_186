@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> Login </title>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" type="text/css" href="~/Library/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/loginStyle.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="loginContainer">
+            <p class="noselect">Login</p>
+            @using (Html.BeginForm("LoginPage", "User", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="inputWrapper">
+                    <input class="inputStyle" type="text" autocomplete="off" placeholder="Type your username" name="username" />
+                    <span class="symbol" data-symbol="&#61447;"></span>
+                </div>
+                <div class="inputWrapper">
+                    <input class="inputStyle" type="password" autocomplete="off" placeholder="Type your password" name="password" />
+                    <span class="symbol" data-symbol="&#61475;"></span>
+                </div>
+                <input class="buttonSubmit noselect" type="submit" value=&#61697; />
+            }
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/Library/jquery-3.3.1.min.js"></script>
+    <script>
+        const inputTag = $('.inputStyle');
+        inputTag.on('focus', () => {
+            const value = inputTag.val().trim();
+            value ? inputTag.addClass('has-val') : inputTag.removeClass('has-val');
+        })
+    </script>
+</body>
+</html>

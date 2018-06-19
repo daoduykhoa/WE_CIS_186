@@ -89,7 +89,7 @@ namespace WE_CIS_186.Controllers
                                   };
                 return Json(new { aaData = littleBirds }, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //ErrorLogers.ErrorLog(ex);
                 return Json(new

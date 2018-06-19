@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "FontAwesome";
+  font-weight: normal;
+  font-style: normal;
+  src: url("../Library/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.eot");
+  src: url("../Library/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.eot") format("embedded-opentype"), url("../Library/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.woff2") format("woff2"), url("../Library/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.woff") format("woff"), url("../Library/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.ttf") format("truetype"), url("../Library/fontawesome/web-fonts-with-css/webfonts/fa-solid-900.svg") format("svg"); }
+* {
+  box-sizing: border-box; }
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none; }
+
+body, html {
+  height: 100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #12c2e9;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #bdffa5, #ffc6a5, #e7a5ff);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #bdffa5, #ffc6a5, #e7a5ff);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+.container {
+  min-height: 100vh;
+  max-width: 60vw;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; }
+  .container .loginContainer {
+    background: white;
+    border-radius: 10px;
+    margin: 1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg); }
+  to {
+    -webkit-filter: hue-rotate(-360deg); } }
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg); }
+  to {
+    -webkit-filter: hue-rotate(-360deg); } }
+    .container .loginContainer p {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 500;
+      margin: 2rem 0;
+      padding: 2px;
+      border-bottom: 0.5px dotted #f35626;
+      color: #f35626;
+      background-image: -webkit-linear-gradient(45deg, #f35626, #feab3a);
+      background-clip: text;
+      animation: hue 5s infinite linear;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-animation: hue 5s infinite linear; }
+    .container .loginContainer form {
+      margin: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; }
+      .container .loginContainer form .inputWrapper {
+        position: relative;
+        font-size: 1.5rem;
+        margin: 10px 40px; }
+        .container .loginContainer form .inputWrapper .inputStyle {
+          font-family: 'FontAwesome', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          border: none;
+          border-right-width: 2px;
+          border-style: solid;
+          border-color: rgba(0, 0, 0, 0);
+          background: none;
+          padding: 6px 5px 6px 40px;
+          -webkit-transition: all 0.7s;
+          -o-transition: all 0.7s;
+          -moz-transition: all 0.7s;
+          transition: all 0.7s; }
+        .container .loginContainer form .inputWrapper .inputStyle:focus {
+          outline: none; }
+        .container .loginContainer form .inputWrapper .symbol {
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 100%;
+          top: 2px;
+          left: 6px;
+          pointer-events: none; }
+        .container .loginContainer form .inputWrapper .symbol::before {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: -6px;
+          width: 0;
+          height: 2px;
+          background: #c471ed;
+          -webkit-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          transition: all 0.4s; }
+        .container .loginContainer form .inputWrapper .symbol::after {
+          content: attr(data-symbol);
+          font-family: 'FontAwesome';
+          color: #adadad;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute; }
+        .container .loginContainer form .inputWrapper .inputStyle:focus + .symbol::before {
+          width: 100%; }
+        .container .loginContainer form .inputWrapper .inputStyle:focus {
+          border-right: 2px solid #c471ed; }
+        .container .loginContainer form .inputWrapper .has-val.inputStyle + .symbol::before {
+          width: 100%; }
+        .container .loginContainer form .inputWrapper .inputStyle:focus + .symbol::after {
+          color: #c471ed; }
+        .container .loginContainer form .inputWrapper .has-val.inputStyle + .symbol::after {
+          color: #c471ed; }
+      .container .loginContainer form .buttonSubmit {
+        font-family: "FontAwesome";
+        margin: 2rem 0;
+        padding: 0.25rem 2rem;
+        font-weight: 700;
+        border: 1.5px solid rgba(0, 0, 0, 0.7);
+        border-radius: 2px;
+        background: none;
+        color: #f35626;
+        background-image: -webkit-linear-gradient(45deg, #f35626, #feab3a);
+        background-clip: text;
+        animation: hue 10s infinite linear;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-animation: hue 10s infinite linear; }
+        .container .loginContainer form .buttonSubmit:hover {
+          outline: none;
+          border: 1.5px dashed rgba(0, 0, 0, 0.7); }
+
+/*# sourceMappingURL=loginStyle.css.map */

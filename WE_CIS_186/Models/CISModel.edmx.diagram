@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c817c414fcec4327827d5773cf3c49f7" Name="Diagram1">
         <EntityTypeShape EntityType="wenevaescapeModel.CustomerInf" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="wenevaescapeModel.User" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
