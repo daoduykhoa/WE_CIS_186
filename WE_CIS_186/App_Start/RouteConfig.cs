@@ -16,7 +16,7 @@ namespace WE_CIS_186
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, e = UrlParameter.Optional }
+                defaults: new { controller = "User", action = "LoginPage", id = UrlParameter.Optional, e = UrlParameter.Optional }
             );
         }
     }

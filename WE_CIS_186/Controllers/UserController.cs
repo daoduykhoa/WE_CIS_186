@@ -42,7 +42,7 @@ namespace WE_CIS_186.Controllers
                         {
                             //admin
                             case "1":
-                                return RedirectToAction("CustomerList", "Home");
+                                return RedirectToAction("Index", "Home");
                             //other
                             default:
                                 return RedirectToAction("Index", "Home");

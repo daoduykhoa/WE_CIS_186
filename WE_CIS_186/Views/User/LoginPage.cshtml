@@ -5,8 +5,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title> Login </title>
-
+    <title> Login - CIM System </title>
+    <meta name="description" content="Customer Information Management System" />
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Library/img/system/flavicon.png">
     <!-- Font awesome -->
     <link rel="stylesheet" type="text/css" href="~/Library/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
     <!-- Animate css -->
@@ -17,7 +18,7 @@
 <body>
     <div class="container">
         <div class="loginContainer">
-            <p class="noselect">Login</p>
+            <p class="noselect">CIS Login</p>
             @using (Html.BeginForm("LoginPage", "User", FormMethod.Post, new { role = "form" }))
             {
                 @Html.AntiForgeryToken()

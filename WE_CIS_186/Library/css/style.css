@@ -299,7 +299,13 @@ body {
         display: block;
         position: absolute;
     }
-
+        .KangAlert p {
+            text-shadow: -1px 0 #FAD766, 0 1px #FAD766, 1px 0 #FAD766, 0 -1px #FAD766;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            user-select: none;
+        }
     .CustomerList0 {
         display: none;
     }
@@ -534,9 +540,9 @@ body {
 }
 
 #afooter {
-    background-color: #DADADA;
-    height: 50px;
-    padding: 10px;
+    background-color: #FAD766;
+    height: 30px;
+    padding: 2px;
     border-top: 1px solid #ABABAB;
     position: fixed;
     bottom: 0;
@@ -654,3 +660,37 @@ section {
 ::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
+
+html {
+    font-family: "Helvetica Neue", sans-serif;
+    width: 100%;
+    color: #666666;
+    text-align: center;
+}
+.popup-overlay {
+    /*Hides pop-up when there is no "active" class*/
+    visibility: hidden;
+    position: absolute;
+    background: #ffffff;
+    border: 3px solid #666666;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    z-index: 999;
+}
+
+    .popup-overlay.active {
+        /*displays pop-up when "active" class is present*/
+        visibility: visible;
+        text-align: center;
+    }
+
+.popup-content {
+    /*Hides pop-up content when there is no "active" class */
+    visibility: hidden;
+}
+
+    .popup-content.active {
+        /*Shows pop-up content when "active" class is present */
+        visibility: visible;
+    }
