@@ -17,7 +17,9 @@
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Misc" Type="nvarchar" MaxLength="200" />
           <Property Name="PreCode" Type="varchar" MaxLength="50" />
-          <Property Name="Kangz" Type="varchar" MaxLength="5" />
+          <Property Name="Month" Type="varchar" MaxLength="5" />
+          <Property Name="Year" Type="varchar" MaxLength="10" />
+          <Property Name="Days" Type="varchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -48,11 +50,22 @@
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Misc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PreCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Kangz" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Days" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="wenevaescapeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CustomerInfs" EntityType="Self.CustomerInf" />
-          <EntitySet Name="Users" EntityType="wenevaescapeModel.User" />
+          <EntitySet Name="Users" EntityType="Self.User" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -80,7 +93,19 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Misc" ColumnName="Misc" />
                 <ScalarProperty Name="PreCode" ColumnName="PreCode" />
-                <ScalarProperty Name="Kangz" ColumnName="Kangz" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="wenevaescapeModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -53,7 +53,9 @@ namespace WE_CIS_186.Controllers
                     littleBunny.DoB = wes.DoB;
                     littleBunny.Address = wes.Address;
                     littleBunny.PreCode = wes.PreCode;
-                    littleBunny.Kangz = DateTime.Now.ToString("MM");
+                    littleBunny.Month = DateTime.Now.ToString("MM");
+                    littleBunny.Year = DateTime.Now.ToString("yyyy");
+                    littleBunny.Days = DateTime.Now.Day.ToString();
                     littleCat.CustomerInfs.Add(littleBunny);
                     littleCat.SaveChanges();
                     //}
@@ -67,36 +69,37 @@ namespace WE_CIS_186.Controllers
 
         public ActionResult CustomerList(string id)
         {
-            var records = db.CustomerInfs.Where(x => x.Kangz.Equals(id)).FirstOrDefault();
+            var records = db.CustomerInfs.Where(x => x.Month == id).ToList();
             return View(records);
         }
-        public ActionResult LoadData(string id)
-        {
-            List<CustomerInf> _list = new List<CustomerInf>();
-            try
-            {
-                _list = db.CustomerInfs.ToList();
-                var littleBirds = from craws in _list
-                                  where craws.Kangz.Equals(id)
-                                  select new[]
-                                  {
-                                        Convert.ToString(craws.Name),
-                                        Convert.ToString(craws.DoB),
-                                        Convert.ToString(craws.Phone),
-                                        Convert.ToString(craws.Email),
-                                        Convert.ToString(craws.Address),
-                                        Convert.ToString(craws.PreCode)
-                                  };
-                return Json(new { aaData = littleBirds }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception)
-            {
-                //ErrorLogers.ErrorLog(ex);
-                return Json(new
-                {
-                    aaData = new List<string[]> { }
-                }, JsonRequestBehavior.AllowGet);
-            }
-        }
+        //public ActionResult LoadData(string id)
+        //{
+        //    List<CustomerInf> _list = new List<CustomerInf>();
+        //    try
+        //    {
+        //        _list = db.CustomerInfs.ToList();
+        //        var littleBirds = from craws in _list
+        //                          where craws.Kangz.Equals(id)
+        //                          select new[]
+        //                          {
+        //                                Convert.ToString(craws.ID),
+        //                                Convert.ToString(craws.Name),
+        //                                Convert.ToString(craws.DoB),
+        //                                Convert.ToString(craws.Phone),
+        //                                Convert.ToString(craws.Email),
+        //                                Convert.ToString(craws.Address),
+        //                                Convert.ToString(craws.PreCode)
+        //                          };
+        //        return Json(new { aaData = littleBirds }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //ErrorLogers.ErrorLog(ex);
+        //        return Json(new
+        //        {
+        //            aaData = new List<string[]> { }
+        //        }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
     }
 }

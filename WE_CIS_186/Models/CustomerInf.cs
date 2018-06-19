@@ -22,6 +22,8 @@ namespace WE_CIS_186.Models
         public string Phone { get; set; }
         public string Misc { get; set; }
         public string PreCode { get; set; }
-        public string Kangz { get; set; }
+        public string Month { get; set; }
+        public string Year { get; set; }
+        public string Days { get; set; }
     }
 }
