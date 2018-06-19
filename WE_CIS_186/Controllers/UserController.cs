@@ -31,18 +31,27 @@ namespace WE_CIS_186.Controllers
                 //var EncryptedUsersPassword = EncryptS.Hash(user.password);
                 if (ModelState.IsValid)
                 {
+
                     var xUser = db.Users.Where(x => x.username == user.username && x.password == user.password).FirstOrDefault();
-                    Session["ID"] = xUser.id;
-                    Session["Username"] = xUser.username;
-                    Session["Role"] = xUser.role;
-                    switch (xUser.role.ToString())
+                    if (xUser != null)
                     {
-                        case "1":
-                            return RedirectToAction("CustomerList", "Home");
-                        case "2":
-                            return View();
-                        default:
-                            return View();
+                        Session["ID"] = xUser.id;
+                        Session["Username"] = xUser.username;
+                        Session["Role"] = xUser.role;
+                        switch (xUser.role.ToString())
+                        {
+                            //admin
+                            case "1":
+                                return RedirectToAction("CustomerList", "Home");
+                            //other
+                            default:
+                                return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.LoginError = "Wrong username or password.";
+                        return View("LoginPage", user);
                     }
                 }
                 else
@@ -50,7 +59,7 @@ namespace WE_CIS_186.Controllers
                     ViewBag.LoginError = "Wrong username or password.";
                     return View("LoginPage", user);
                 }
-                
+
             }
         }
 

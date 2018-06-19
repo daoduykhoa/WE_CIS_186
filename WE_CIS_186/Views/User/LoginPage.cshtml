@@ -9,6 +9,8 @@
 
     <!-- Font awesome -->
     <link rel="stylesheet" type="text/css" href="~/Library/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <!-- Animate css -->
+    <link rel="stylesheet" type="text/css" href="~/Library/animate.css">
 
     <link rel="stylesheet" type="text/css" href="~/Content/loginStyle.css" />
 </head>
@@ -19,12 +21,15 @@
             @using (Html.BeginForm("LoginPage", "User", FormMethod.Post, new { role = "form" }))
             {
                 @Html.AntiForgeryToken()
+                <div class="loginAlert">
+                    @ViewBag.LoginError
+                </div>
                 <div class="inputWrapper">
-                    <input class="inputStyle" type="text" autocomplete="off" placeholder="Type your username" name="username" />
+                    <input id="usn" class="inputStyle" type="text" autocomplete="off" placeholder="Type your username" name="username" />
                     <span class="symbol" data-symbol="&#61447;"></span>
                 </div>
                 <div class="inputWrapper">
-                    <input class="inputStyle" type="password" autocomplete="off" placeholder="Type your password" name="password" />
+                    <input id="psw" class="inputStyle" type="password" autocomplete="off" placeholder="Type your password" name="password" />
                     <span class="symbol" data-symbol="&#61475;"></span>
                 </div>
                 <input class="buttonSubmit noselect" type="submit" value=&#61697; />
@@ -35,10 +40,15 @@
     <!-- Scripts -->
     <script src="~/Library/jquery-3.3.1.min.js"></script>
     <script>
-        const inputTag = $('.inputStyle');
-        inputTag.on('focus', () => {
-            const value = inputTag.val().trim();
-            value ? inputTag.addClass('has-val') : inputTag.removeClass('has-val');
+        const inputTag1 = $('#usn');
+        const inputTag2 = $('#psw');
+        inputTag1.on('change', () => {
+            const value = inputTag1.val().trim();
+            value ? inputTag1.addClass('has-val') : inputTag1.removeClass('has-val');
+        })
+        inputTag2.on('change', () => {
+            const value = inputTag2.val().trim();
+            value ? inputTag2.addClass('has-val') : inputTag2.removeClass('has-val');
         })
     </script>
 </body>

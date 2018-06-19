@@ -21,7 +21,7 @@
 body, html {
   height: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0px;
   margin: 0px;
   overflow-x: hidden;
@@ -57,6 +57,11 @@ body, html {
     justify-content: center;
     align-items: center;
     flex-direction: column; }
+    .container .loginContainer .loginAlert {
+      font-size: 0.6rem;
+      border-radius: 4px;
+      color: red;
+      text-align: center; }
 @keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg); }

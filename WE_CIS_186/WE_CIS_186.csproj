@@ -240,6 +240,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Library\animate.css" />
     <Content Include="Library\css\bootstrap.min.css" />
     <Content Include="Library\css\main.css" />
     <Content Include="Library\css\style.css" />
@@ -343,6 +344,7 @@
     <Content Include="Library\images\meow.jpg" />
     <Content Include="Library\images\we-title.png" />
     <Content Include="Library\img\system\flavicon.png" />
+    <Content Include="Library\jquery-3.3.1.min.js" />
     <Content Include="Library\jquery-nice-select-1.1.0\css\nice-select.css" />
     <Content Include="Library\jquery-nice-select-1.1.0\css\style.css" />
     <Content Include="Library\jquery-nice-select-1.1.0\js\fastclick.js" />
