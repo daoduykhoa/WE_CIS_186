@@ -10,14 +10,19 @@
         <select id="listTime">
             <option>---Tháng---</option>
             @foreach (var item in Model)
-        {
-            <option>@item.Kangz</option>
-    }
+            {
+                <option>@item.Kangz</option>
+            }
         </select>
     </div>
-    <section>
+    <div class="KangAlert">
+        <div>
+            <p style="color: red; font-size: 15px;">Giao diện này chưa hỗ trợ thiết bị di động</p>
+        </div>
+    </div>
+    <section class="CustomerList0">
         <div class="tbl-header">
-            <table cellpadding="0" cellspacing="0" border="0">
+            <table class="fixmobile" cellpadding="0" cellspacing="0" border="0">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -35,19 +40,22 @@
         <div class="tbl-content">
             <table cellpadding="0" cellspacing="0" border="0" class="table-hover">
                 <tbody>
-                    @foreach (var item in Model)
-                    {
-
-                        <tr>
-                            <td>@item.ID</td>
-                            <td>@item.Name</td>
-                            <td>@item.DoB</td>
-                            <td style="word-wrap: break-word">@item.Address</td>
-                            <td>@item.Email</td>
-                            <td>@item.Phone</td>
-                            <td>@item.Misc</td>
-                            <td>@item.PreCode</td>
-                        </tr>
+                    @{
+                        int i = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>@item.Name</td>
+                                <td>@item.DoB</td>
+                                <td>@item.Address</td>
+                                <td>@item.Email</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Misc</td>
+                                <td>@item.PreCode</td>
+                            </tr>
+                            i++;
+                        }
                     }
                 </tbody>
             </table>
@@ -62,19 +70,18 @@
 <script src="~/Library/js/jquery.min.js"></script>
 <link href="~/Library/css/bootstrap.min.css" rel="stylesheet" />
 <script>
-    $(document).ready(function () {
-        $('.listTime').niceSelect();
-        var usedNames = {};
-        $("select[id='listTime'] > option").each(function () {
-            if (usedNames[this.text]) {
-                $(this).remove();
-            } else {
-                usedNames[this.text] = this.value;
-            }
-        });
+    $('.listTime').niceSelect();
+    var usedNames = {};
+    $("select[id='listTime'] > option").each(function () {
+        if (usedNames[this.text]) {
+            $(this).remove();
+        } else {
+            usedNames[this.text] = this.value;
+        }
     });
     $(window).on("load resize ", function () {
         var scrollWidth = $(".tbl-content").width() - $(".tbl-content table").width();
         $(".tbl-header").css({ "padding-right": scrollWidth });
     }).resize();
+    $('.tbl-header').on('scroll', function () { $('.fixmobile').css('top', $(this).scrollTop()); });
 </script>

@@ -284,7 +284,23 @@
         top: 17px;
         height: 0;
     }
+    .KangAlert {
+        display: none;
+    }
+@media (max-width: 730px) {
+    .KangAlert {
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 180px;
+        display: block;
+        position: absolute;
+    }
 
+    .CustomerList0 {
+        display: none;
+    }
+
+}
 @media all and (max-width: 768px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
     .fancybackground {
         background-image: url('../images/background.jpg');
@@ -302,6 +318,7 @@
         right: 0;
         margin: auto;
     }
+
     #cssmenu {
         width: 100%;
     }
@@ -521,8 +538,9 @@ table {
 
 .tbl-header {
     background-color: rgba(255,255,255,0.3);
+    overflow: auto;
+    position: relative;
 }
-
 .tbl-content {
     height: 300px;
     overflow-x: auto;
@@ -533,14 +551,16 @@ table {
 th {
     padding: 20px 15px;
     text-align: left;
-    font-weight: 500;
+    font-weight: bolder;
     font-size: 14px;
     color: #fff;
     text-transform: uppercase;
+    word-wrap: break-word;
 }
 
 td {
     padding: 15px;
+    word-wrap: break-word;
     text-align: left;
     vertical-align: middle;
     font-weight: 300;
