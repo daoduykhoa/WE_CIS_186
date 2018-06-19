@@ -231,6 +231,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Library\js\jquery.min.js" />
     <Content Include="Library\css\bootstrap.min.css" />
     <Content Include="Library\css\main.css" />
     <Content Include="Library\css\nice-select.css" />

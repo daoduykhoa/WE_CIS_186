@@ -212,6 +212,24 @@ iframe {
     z-index: 1;
 }
 
+
+.og_table {
+    width: 100%;
+    margin-top: 50px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+
 .contact100-map {
     position: absolute;
     z-index: -2;
