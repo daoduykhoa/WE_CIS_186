@@ -25,18 +25,18 @@
 
             @Html.AntiForgeryToken()
             @if (ViewBag.SuccessMessage != null)
-            {
-                <div class="alert alert-success">@ViewBag.SuccessMessage</div>
-            }
+    {
+        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
 
-            @* Name *@
-                <div class="wrap-input100 validate-input" data-validate="Name is required">
-                    <span style="user-select: none; font-weight: bold" class="label-input100">Họ và tên:</span>
-                    @*<input class="input100" type="text" name="name" placeholder="Họ tên đầy đủ của bạn - (*) bắt buộc" autocomplete="new-password">*@
-                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Họ tên đầy đủ của bạn - (*) bắt buộc", @class = "input100", @autofocus = "autofocus", @autocomplete = "new-password" })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                    <span class="focus-input100"></span>
-                </div>
+        @* Name *@
+            <div class="wrap-input100 validate-input" data-validate="Name is required">
+                <span style="user-select: none; font-weight: bold" class="label-input100">Họ và tên:</span>
+                @*<input class="input100" type="text" name="name" placeholder="Họ tên đầy đủ của bạn - (*) bắt buộc" autocomplete="new-password">*@
+                @Html.TextBoxFor(model => model.Name, new { placeholder = "Họ tên đầy đủ của bạn - (*) bắt buộc", @class = "input100", @autofocus = "autofocus", @autocomplete = "new-password" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <span class="focus-input100"></span>
+            </div>
             @* Email *@
             <div class="wrap-input100">
                 <span style="user-select: none; font-weight: bold" class="label-input100">Email:</span>
@@ -74,6 +74,11 @@
                 @Html.TextBoxFor(model => model.PreCode, new { placeholder = "Code giảm giá", @class = "input100", @autofocus = "autofocus" })
                 <span class="focus-input100"></span>
             </div>
+
+            <div class="wrap-input100">
+                <input type="checkbox" name="phone" placeholder="" autocomplete="new-password"> Tôi đồng ý với điều khoản của We Escape. Click vào đây để xem chi tiết điều khoản
+            </div>
+
             <div class="container-contact100-form-btn">
                 <button type="submit" class="contact100-form-btn">
                     <span>
