@@ -33,10 +33,9 @@ namespace WE_CIS_186.Controllers
                 using (wenevaescapeEntities db = new wenevaescapeEntities())
                 {
                     var EncryptedUsersPassword = EncryptS.Hash(user.loginPassword);
-                    var xUser = db.Users.Where(x => x.username == user.loginUsername && x.password == user.loginPassword).FirstOrDefault();
+                    var xUser = db.Users.Where(x => x.username == user.loginUsername && x.password == EncryptedUsersPassword).FirstOrDefault();
                     if (xUser != null)
                     {
-                        ViewBag.ABC = xUser.username.ToString();
                         Session["ID"] = xUser.id;
                         Session["Username"] = xUser.username;
                         Session["Role"] = xUser.role;
