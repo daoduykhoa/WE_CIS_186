@@ -1,11 +1,7 @@
 ﻿@{
     ViewBag.Title = "We Escape SG";
 }
-
-
-
 @model WE_CIS_186.Models.Customer
-
 
 <div class="container-contact100" style="">
     <div class="wrap-contact100">
@@ -25,11 +21,11 @@
 
             @Html.AntiForgeryToken()
             @if (ViewBag.SuccessMessage != null)
-    {
-        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
-}
+            {
+                <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+            }
 
-        @* Name *@
+            @* Name *@
             <div class="wrap-input100 validate-input" data-validate="Name is required">
                 <span style="user-select: none; font-weight: bold" class="label-input100">Họ và tên:</span>
                 @*<input class="input100" type="text" name="name" placeholder="Họ tên đầy đủ của bạn - (*) bắt buộc" autocomplete="new-password">*@
@@ -76,9 +72,19 @@
             </div>
 
             <div class="wrap-input100">
-                <input type="checkbox" name="phone" placeholder="" autocomplete="new-password"> Tôi đồng ý với điều khoản của We Escape. Click vào đây để xem chi tiết điều khoản
+                <div style="display: flex; justify-content: flex-start">
+                    <input type="checkbox" id="cbx" class="inp-cbx" style="display: none">
+                    <label for="cbx" class="cbx">
+                        <span>
+                            <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                            </svg>
+                        </span>
+                        <span>Đồng ý điều khoản điều khoản của We Escape</span>
+                    </label>
+                </div>
+                <p type="button" id="clickMe">Click vào đây để xem chi tiết điều khoản</p>
             </div>
-
             <div class="container-contact100-form-btn">
                 <button type="submit" class="contact100-form-btn">
                     <span>
@@ -90,3 +96,42 @@
         </form>
     </div>
 </div>
+
+
+<textarea cols="0" rows="0" id="myText" style="display:none">Some hidden text display none</textarea>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
+<script>
+    $(function () {
+        $('#clickMe').click(function (event) {
+            var mytext = $('#myText').val();
+            $('<div id="dialog">' + mytext + '</div>').appendTo('body');
+            event.preventDefault();
+            $("#dialog").dialog({
+                width: 600,
+                modal: true,
+                title: "Điều khoản dịch vụ",
+                close: function (event, ui) {
+                    $("#dialog").remove();
+                }
+            });
+        }); //close click
+    });
+    //dom ready handler
+    jQuery(function ($) {
+        //form submit handler
+        $('.contact100-form').submit(function (e) {
+            //check atleat 1 checkbox is checked
+            if (!$('.inp-cbx').is(':checked')) {
+                //prevent the default form submit if it is not checked
+                e.preventDefault();
+                alert('Vui lòng đồng ý với điều khoản của chúng tôi !')
+            }
+        })
+    });
+</script>
