@@ -10,31 +10,56 @@
     <link rel="icon" type="image/png" sizes="16x16" href="~/Library/img/system/flavicon.png">
     <!-- Font awesome -->
     <link rel="stylesheet" type="text/css" href="~/Library/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-    <!-- Animate css -->
-    <link rel="stylesheet" type="text/css" href="~/Library/animate.css">
 
     <link rel="stylesheet" type="text/css" href="~/Content/loginStyle.css" />
 </head>
 <body>
     <div class="container">
-        <div class="loginContainer">
-            <p class="noselect">CIS Login</p>
-            @using (Html.BeginForm("LoginPage", "User", FormMethod.Post, new { role = "form" }))
+        <div id="login" class="loginContainer">
+            <p class="noselect">Login</p>
+            @using (Html.BeginForm("Login", "User", FormMethod.Post, new { role = "form" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="loginAlert">
                     @ViewBag.LoginError
                 </div>
                 <div class="inputWrapper">
-                    <input id="usn" class="inputStyle" type="text" autocomplete="off" placeholder="Type your username" name="username" />
+                    <input id="usn" class="inputStyle" type="text" autocomplete="off" placeholder="Type your username" name="loginUsername" />
                     <span class="symbol" data-symbol="&#61447;"></span>
                 </div>
                 <div class="inputWrapper">
-                    <input id="psw" class="inputStyle" type="password" autocomplete="off" placeholder="Type your password" name="password" />
+                    <input id="psw" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Type your password" name="loginPassword" />
                     <span class="symbol" data-symbol="&#61475;"></span>
                 </div>
                 <input class="buttonSubmit noselect" type="submit" value=&#61697; />
             }
+
+            <a id="toRegister" href="#register"><span>Register a new account</span> &#62219;</a>
+        </div>
+        <div id="register" class="registerContainer">
+            <p class="noselect">Register</p>
+            @using (Html.BeginForm("Register", "User", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+            <div class="loginAlert">
+                @ViewBag.RegisterError
+                @ViewBag.DuplicateMessage
+            </div>
+                <div class="inputWrapper">
+                    <input id="usn" class="inputStyle" type="text" autocomplete="off" placeholder="Choose your username" name="registerUsername" />
+                    <span class="symbol" data-symbol="&#62729;"></span>
+                </div>
+                <div class="inputWrapper">
+                    <input id="psw" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Choose your password" name="registerPassword" />
+                    <span class="symbol" data-symbol="&#61483;"></span>
+                </div>
+                <div class="inputWrapper">
+                    <input id="cfpsw" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Confirm password" name="registerConfirmPassword" />
+                    <span class="symbol" data-symbol="&#61484;"></span>
+                </div>
+                <input class="buttonSubmit noselect" type="submit" value=&#61698; />
+            }
+            <a id="toLogin" href="#login">&#62218; <span>Already has an account?</span></a>
         </div>
     </div>
 
@@ -51,6 +76,21 @@
             const value = inputTag2.val().trim();
             value ? inputTag2.addClass('has-val') : inputTag2.removeClass('has-val');
         })
+
+        const loginSection = $('#login');
+        const registerSection = $('#register');
+        // init section
+        loginSection.show();
+        registerSection.hide();
+        $('#toRegister').on('click', () => {
+            loginSection.hide(1000);
+            registerSection.show(2000);
+        })
+        $('#toLogin').on('click', () => {
+            loginSection.show(2000);
+            registerSection.hide(1000);
+        })
+
     </script>
 </body>
 </html>

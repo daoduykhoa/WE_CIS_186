@@ -8,6 +8,7 @@ using WE_CIS_186.Encrypt;
 
 namespace WE_CIS_186.Controllers
 {
+    [HandleError]
     public class UserController : Controller
     {
 
@@ -16,25 +17,26 @@ namespace WE_CIS_186.Controllers
         [HttpGet]
         public ActionResult LoginPage()
         {
-
-            return View();
+            UserValidate model = new UserValidate();
+            return View(model);
         }
 
+        //Login
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LoginPage(UserValidate user)
+        public ActionResult Login(UserValidate user)
         {
-            // Db
-            using (wenevaescapeEntities db = new wenevaescapeEntities())
+            if (ModelState.IsValid)
             {
-                //var EncryptedUsersPassword = EncryptS.Hash(user.password);
-                if (ModelState.IsValid)
+                // Db
+                using (wenevaescapeEntities db = new wenevaescapeEntities())
                 {
-
-                    var xUser = db.Users.Where(x => x.username == user.username && x.password == user.password).FirstOrDefault();
+                    var EncryptedUsersPassword = EncryptS.Hash(user.loginPassword);
+                    var xUser = db.Users.Where(x => x.username == user.loginUsername && x.password == user.loginPassword).FirstOrDefault();
                     if (xUser != null)
                     {
+                        ViewBag.ABC = xUser.username.ToString();
                         Session["ID"] = xUser.id;
                         Session["Username"] = xUser.username;
                         Session["Role"] = xUser.role;
@@ -56,11 +58,35 @@ namespace WE_CIS_186.Controllers
                 }
                 else
                 {
-                    ViewBag.LoginError = "Please input your username and password.";
+                    ViewBag.LoginError = "Wrong username or password.";
                     return View("LoginPage", user);
                 }
 
+        //Register
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(UserValidate user, User xUser)
+        {
+            if (ModelState.IsValid)
+            {
+                using (wenevaescapeEntities db = new wenevaescapeEntities())
+                {
+                    if (db.Users.Any(x => x.username == user.registerUsername))
+                    {
+                        ViewBag.DuplicateMessage = "This username has already used.";
+                        return Redirect("~/User/LoginPage#register");
+                    }
+                    xUser.username = user.registerUsername.ToString();
+                    xUser.password = EncryptS.Hash(user.registerPassword).ToString();
+                    xUser.role = (int)1;
+                    db.Users.Add(xUser);
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.SaveChanges();
+                }
+                ViewBag.SuccessMessage = "Your account successfully registered. Your account will be activated in 24h if all information is valid.";
             }
+            return View("LoginPage", new UserValidate());
         }
 
         public ActionResult Logout()
