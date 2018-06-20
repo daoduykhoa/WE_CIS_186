@@ -41,12 +41,12 @@
 
 body, html {
     height: 100%;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: Open Sans, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-    font-family: 'Helvetica Neue';
+    font-family: Open Sans;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    font-family: 'Helvetica Neue';
+    font-family: Open Sans;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -277,7 +277,7 @@ iframe {
 }
 
 .contact100-form-title-2 {
-    font-family: 'Helvetica Neue';
+    font-family: Open Sans;
     font-size: 15px;
     color: #fff;
     line-height: 1.5;
@@ -325,7 +325,7 @@ iframe {
 }
 
 .label-input100 {
-    font-family: 'Helvetica Neue';
+    font-family: Open Sans;
     font-size: 15px;
     color: #808080;
     line-height: 1.2;
@@ -338,7 +338,7 @@ iframe {
 
 /*---------------------------------------------*/
 .input100 {
-    font-family: 'Helvetica Neue';
+    font-family: Open Sans;
     font-size: 15px;
     color: #555555;
     line-height: 1.2;
@@ -422,7 +422,7 @@ textarea.input100 {
     height: 50px;
     background: #D4AF37;
     border-radius: 25px;
-    font-family: 'Helvetica Neue';
+    font-family: Open Sans;
     font-size: 16px;
     color: #fff;
     line-height: 1.2;

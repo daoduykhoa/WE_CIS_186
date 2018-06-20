@@ -55,12 +55,11 @@ namespace WE_CIS_186.Controllers
                         return View("LoginPage", user);
                     }
                 }
-            }
-            else
-            {
-                return View("LoginPage", user);
-            }
-        }
+                else
+                {
+                    ViewBag.LoginError = "Wrong username or password.";
+                    return View("LoginPage", user);
+                }
 
         //Register
         [AllowAnonymous]

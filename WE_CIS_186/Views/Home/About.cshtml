@@ -1,5 +1,16 @@
 ﻿@{
     ViewBag.Title = "About";
+    if (Session["ID"] != null)
+    {
+        if (Convert.ToInt32(Session["Role"]) == 2)
+        {
+            Response.Redirect("~/Admin/AddUser");
+        }
+    }
+    else
+    {
+        Response.Redirect("~/User/LoginPage");
+    }
 }
 <style>
     .kang {
@@ -17,5 +28,6 @@
 
 <div class="kang">
     <img class="avt" src="~/Library/images/meow.jpg" />
+    |
     <p style="font-size: 18px; font-weight: bold; color: #FAD766">A gift from Kang to WES with l0v3 :"></p>
 </div>

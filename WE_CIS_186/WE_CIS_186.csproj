@@ -464,8 +464,8 @@
     <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.ttf" />
     <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.woff" />
     <Content Include="Library\fontawesome\web-fonts-with-css\webfonts\fa-solid-900.woff2" />
-    <None Include="Properties\PublishProfiles\wescis - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\wescis - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\wesaigon - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\wesaigon - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
