@@ -56,7 +56,7 @@ namespace WE_CIS_186.Controllers
                 }
                 else
                 {
-                    ViewBag.LoginError = "Wrong username or password.";
+                    ViewBag.LoginError = "Please input your username and password.";
                     return View("LoginPage", user);
                 }
 

@@ -1,5 +1,16 @@
 ﻿@{
     ViewBag.Title = "We Escape SG";
+    if (Session["ID"] != null)
+    {
+        if (Convert.ToInt32(Session["Role"]) == 2)
+        {
+            Response.Redirect("~/Admin/AddUser");
+        }
+    }
+    else
+    {
+        Response.Redirect("~/User/LoginPage");
+    }
 }
 @model WE_CIS_186.Models.Customer
 
@@ -83,7 +94,7 @@
                         <span>Đồng ý điều khoản điều khoản của We Escape</span>
                     </label>
                 </div>
-                <p type="button" id="clickMe">Click vào đây để xem chi tiết điều khoản</p>
+                <p type="button" id="clickMe" onclick="showResult()">Click vào đây để xem chi tiết điều khoản</p>
             </div>
             <div class="container-contact100-form-btn">
                 <button type="submit" class="contact100-form-btn">
@@ -98,7 +109,13 @@
 </div>
 
 
-<textarea cols="0" rows="0" id="myText" style="display:none">Some hidden text display none</textarea>
+<textarea cols="60" rows="10" id="myText" style="display:none">
+    1. Tôi sẽ giữ bí mật tất cả các thông tin liên quan đến trò chơi, bao gồm và không giới hạn những việc như truyền miệng, đăng thông tin lên mạng xã hội và các kênh truyền thông để không làm ảnh hưởng đến việc kinh doanh của We Escape. Nếu tôi vi phạm một trong các hành vi trên, tôi xin chịu tất cả các trách nhiệm trước pháp luật.
+    2. Tôi xin cam kết trong vòng 24 tháng kể từ ngày chơi We Escape, tôi sẽ không trực tiếp hoặc gián tiêp tham gia vào ngành kinh doanh trò chơi "Thoát khỏi phòng kín" và các ngành cạnh tranh với We Escape.
+    3. Tôi đã đọc nội quy phòng chơi và hiểu rõ quyền và trách nhiệm của người chơi, như việc bảo vệ các tài sản của We Escape trong phòng chơi. Tôi đồng ý bồi thường trong trường hợp tài sản của We Escape bị hỏng do lỗi của tôi.
+    4. Tôi đã hiểu rõ các trò của We Escape không phù hợp với bà mẹ có thai hoặc với những người có tiền sử bệnh tim, huyết áp cao, sợ phòng kín hay các bệnh tương tự. Với việc đồng ý kí vào cam kết này, tôi đồng ý rằng We Escape sẽ không bị liên đới pháp luật nếu có bất kì vấn đề gì liên quan đến sức khỏe của tôi xảy ra trong quá trình tham gia vào trò chơi tại We Escape.
+    5. Tôi xin cam kết sẽ tuân theo các nội quy chung của We Escape và We Escape có toàn quyền xử lí nếu tôi vi phạm điều khoản đã nêu trên.
+</textarea>
 
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 
@@ -107,6 +124,11 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
 <script>
+    function showResult() {
+        var input = document.getElementById("myText").value;
+        var inputHTML = input.replace(/\r\n|\r|\n/g, "<br />");
+        document.getElementById("myText").innerHTML = inputHTML;
+    }
     $(function () {
         $('#clickMe').click(function (event) {
             var mytext = $('#myText').val();
@@ -115,7 +137,7 @@
             $("#dialog").dialog({
                 width: 600,
                 modal: true,
-                title: "Điều khoản dịch vụ",
+                title: "Điều kiện và điều khoản khi tham gia chơi",
                 close: function (event, ui) {
                     $("#dialog").remove();
                 }
