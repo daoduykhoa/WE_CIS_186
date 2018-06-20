@@ -9,11 +9,18 @@ namespace WE_CIS_186.Models
 {
     public class UserValidate
     {
-        [Required(ErrorMessage = "This field is required.")]
-        public string username { get; set; }
+        public string loginUsername { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
         [DataType(DataType.Password)]
-        public string password { get; set; }
+        public string loginPassword { get; set; }
+
+
+        //===========================Register===============================//
+
+        public string registerUsername { get; set; }
+
+        [DataType(DataType.Password)]
+        public string registerPassword { get; set; }
+        
     }
 }

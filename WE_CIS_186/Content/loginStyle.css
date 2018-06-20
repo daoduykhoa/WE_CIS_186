@@ -56,7 +56,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; }
+    flex-direction: column;
+    box-shadow: 12px 12px 2px 1px rgba(66, 66, 66, 0.2); }
     .container .loginContainer .loginAlert {
       font-size: 0.6rem;
       border-radius: 4px;
@@ -102,6 +103,7 @@ body, html {
         margin: 10px 40px; }
         .container .loginContainer form .inputWrapper .inputStyle {
           font-family: 'FontAwesome', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          text-align: center;
           border: none;
           border-right-width: 2px;
           border-style: solid;
@@ -160,7 +162,7 @@ body, html {
       .container .loginContainer form .buttonSubmit {
         font-family: "FontAwesome";
         margin: 2rem 0;
-        padding: 0.25rem 2rem;
+        padding: 0.25rem 2.5rem;
         font-weight: 700;
         border: 1.5px solid rgba(0, 0, 0, 0.7);
         border-radius: 2px;
@@ -175,5 +177,146 @@ body, html {
         .container .loginContainer form .buttonSubmit:hover {
           outline: none;
           border: 1.5px dashed rgba(0, 0, 0, 0.7); }
+    .container .loginContainer #toRegister {
+      font-family: FontAwesome;
+      text-decoration: none;
+      color: #66a0ff;
+      margin: 1.5rem 0; }
+      .container .loginContainer #toRegister span {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 500;
+        position: relative;
+        top: -1px; }
+      .container .loginContainer #toRegister:hover {
+        color: #ffa962; }
+  .container .registerContainer {
+    background: white;
+    border-radius: 10px;
+    margin: 1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 12px 12px 2px 1px rgba(66, 66, 66, 0.2); }
+    .container .registerContainer p {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 500;
+      margin: 2rem 0;
+      padding: 2px;
+      border-bottom: 0.5px dotted #f35626;
+      color: #f35626;
+      background-image: -webkit-linear-gradient(45deg, #f35626, #feab3a);
+      background-clip: text;
+      animation: hue 5s infinite linear;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-animation: hue 5s infinite linear; }
+    .container .registerContainer form {
+      margin: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; }
+      .container .registerContainer form .inputWrapper {
+        position: relative;
+        font-size: 1.5rem;
+        margin: 10px 40px; }
+        .container .registerContainer form .inputWrapper .inputStyle {
+          font-family: 'FontAwesome', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          text-align: center;
+          border: none;
+          border-right-width: 2px;
+          border-style: solid;
+          border-color: rgba(0, 0, 0, 0);
+          background: none;
+          padding: 6px 5px 6px 40px;
+          -webkit-transition: all 0.7s;
+          -o-transition: all 0.7s;
+          -moz-transition: all 0.7s;
+          transition: all 0.7s; }
+        .container .registerContainer form .inputWrapper .inputStyle:focus {
+          outline: none; }
+        .container .registerContainer form .inputWrapper .symbol {
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 100%;
+          top: 2px;
+          left: 6px;
+          pointer-events: none; }
+        .container .registerContainer form .inputWrapper .symbol::before {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: -6px;
+          width: 0;
+          height: 2px;
+          background: #c471ed;
+          -webkit-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          transition: all 0.4s; }
+        .container .registerContainer form .inputWrapper .symbol::after {
+          content: attr(data-symbol);
+          font-family: 'FontAwesome';
+          color: #adadad;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute; }
+        .container .registerContainer form .inputWrapper .inputStyle:focus + .symbol::before {
+          width: 100%; }
+        .container .registerContainer form .inputWrapper .inputStyle:focus {
+          border-right: 2px solid #c471ed; }
+        .container .registerContainer form .inputWrapper .has-val.inputStyle + .symbol::before {
+          width: 100%; }
+        .container .registerContainer form .inputWrapper .inputStyle:focus + .symbol::after {
+          color: #c471ed; }
+        .container .registerContainer form .inputWrapper .has-val.inputStyle + .symbol::after {
+          color: #c471ed; }
+      .container .registerContainer form .buttonSubmit {
+        font-family: "FontAwesome";
+        margin: 2rem 0;
+        padding: 0.25rem 2.5rem;
+        font-weight: 700;
+        border: 1.5px solid rgba(0, 0, 0, 0.7);
+        border-radius: 2px;
+        background: none;
+        color: #f35626;
+        background-image: -webkit-linear-gradient(45deg, #f35626, #feab3a);
+        background-clip: text;
+        animation: hue 10s infinite linear;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-animation: hue 10s infinite linear; }
+        .container .registerContainer form .buttonSubmit:hover {
+          outline: none;
+          border: 1.5px dashed rgba(0, 0, 0, 0.7); }
+    .container .registerContainer #toLogin {
+      font-family: FontAwesome;
+      text-decoration: none;
+      color: #66a0ff;
+      margin: 1.5rem 0; }
+      .container .registerContainer #toLogin span {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 500;
+        position: relative;
+        top: -1px; }
+      .container .registerContainer #toLogin:hover {
+        color: #ffa962; }
 
 /*# sourceMappingURL=loginStyle.css.map */
