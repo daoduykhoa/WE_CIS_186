@@ -49,18 +49,12 @@ namespace WE_CIS_186.Controllers
                                 return RedirectToAction("Index", "Home");
                         }
                     }
-                    else
-                    {
-                        ViewBag.LoginError = "Wrong username or password.";
-                        return View("LoginPage", user);
-                    }
-                }
-                else
-                {
                     ViewBag.LoginError = "Wrong username or password.";
-                    return View("LoginPage", user);
+                    return View("LoginPage", new UserValidate());
                 }
-
+            }
+            return RedirectToAction("LoginPage", new UserValidate());
+        }
         //Register
         [AllowAnonymous]
         [HttpPost]
@@ -73,8 +67,8 @@ namespace WE_CIS_186.Controllers
                 {
                     if (db.Users.Any(x => x.username == user.registerUsername))
                     {
-                        ViewBag.DuplicateMessage = "This username has already used.";
-                        return Redirect("~/User/LoginPage#register");
+                        ViewBag.RegisterError = "This username has already used.";
+                        return View("LoginPage", new UserValidate());
                     }
                     xUser.username = user.registerUsername.ToString();
                     xUser.password = EncryptS.Hash(user.registerPassword).ToString();
@@ -82,8 +76,9 @@ namespace WE_CIS_186.Controllers
                     db.Users.Add(xUser);
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.SaveChanges();
+                    ViewBag.SuccessMessage = "Your account successfully registered.";
+                    return View("LoginPage", new UserValidate());
                 }
-                ViewBag.SuccessMessage = "Your account successfully registered. Your account will be activated in 24h if all information is valid.";
             }
             return View("LoginPage", new UserValidate());
         }

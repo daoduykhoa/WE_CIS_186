@@ -67,6 +67,13 @@ body, html {
             text-align: center;
         }
 
+        .registerSc {
+            font-size: 0.6rem;
+            border-radius: 4px;
+            color: green;
+            text-align: center;
+        }
+
         @keyframes hue {
             from {
                 -webkit-filter: hue-rotate(0deg);
@@ -251,6 +258,13 @@ body, html {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             -webkit-animation: hue 5s infinite linear;
+        }
+
+        .registerAlert {
+            font-size: 0.8rem;
+            border-radius: 4px;
+            color: red;
+            text-align: center;
         }
 
         form {

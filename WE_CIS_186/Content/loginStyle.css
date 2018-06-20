@@ -63,6 +63,11 @@ body, html {
       border-radius: 4px;
       color: red;
       text-align: center; }
+    .container .loginContainer .registerSc {
+      font-size: 0.6rem;
+      border-radius: 4px;
+      color: green;
+      text-align: center; }
 @keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg); }
@@ -216,6 +221,11 @@ body, html {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       -webkit-animation: hue 5s infinite linear; }
+    .container .registerContainer .registerAlert {
+      font-size: 0.8rem;
+      border-radius: 4px;
+      color: red;
+      text-align: center; }
     .container .registerContainer form {
       margin: 0;
       display: -webkit-box;

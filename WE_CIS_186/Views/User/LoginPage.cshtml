@@ -22,6 +22,10 @@
                 @Html.AntiForgeryToken()
                 <div class="loginAlert">
                     @ViewBag.LoginError
+                    @ViewBag.RegisterError
+                </div>
+                <div class="registerSc">
+                    @ViewBag.SuccessMessage
                 </div>
                 <div class="inputWrapper">
                     <input id="usn" class="inputStyle" type="text" autocomplete="off" placeholder="Type your username" name="loginUsername" />
@@ -31,7 +35,7 @@
                     <input id="psw" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Type your password" name="loginPassword" />
                     <span class="symbol" data-symbol="&#61475;"></span>
                 </div>
-                <input class="buttonSubmit noselect" type="submit" value=&#61697; />
+                <input id="log" disabled="disabled" class="buttonSubmit noselect" type="submit" value=&#61697; />
             }
 
             <a id="toRegister" href="#register"><span>Register a new account</span> &#62219;</a>
@@ -41,23 +45,23 @@
             @using (Html.BeginForm("Register", "User", FormMethod.Post, new { role = "form" }))
             {
                 @Html.AntiForgeryToken()
-            <div class="loginAlert">
-                @ViewBag.RegisterError
-                @ViewBag.DuplicateMessage
-            </div>
+                <div class="registerAlert">
+                    <h5 class="PWnCFPW">Confirm Password does not match!</h5>
+                    <h5 class="ippw">Password must at least 1 characters</h5>
+                </div>
                 <div class="inputWrapper">
-                    <input id="usn" class="inputStyle" type="text" autocomplete="off" placeholder="Choose your username" name="registerUsername" />
+                    <input id="usnR" class="inputStyle" type="text" autocomplete="off" placeholder="Choose your username" name="registerUsername" />
                     <span class="symbol" data-symbol="&#62729;"></span>
                 </div>
                 <div class="inputWrapper">
-                    <input id="psw" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Choose your password" name="registerPassword" />
+                    <input id="pswR" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Choose your password" name="registerPassword" />
                     <span class="symbol" data-symbol="&#61483;"></span>
                 </div>
                 <div class="inputWrapper">
-                    <input id="cfpsw" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Confirm password" name="registerConfirmPassword" />
+                    <input id="cfpswR" class="inputStyle" type="password" autocomplete="off" maxlength="8" placeholder="Confirm password" name="registerConfirmPassword" />
                     <span class="symbol" data-symbol="&#61484;"></span>
                 </div>
-                <input class="buttonSubmit noselect" type="submit" value=&#61698; />
+                <input id="reg" disabled="disabled" class="buttonSubmit noselect" type="submit" value=&#61698; />
             }
             <a id="toLogin" href="#login">&#62218; <span>Already has an account?</span></a>
         </div>
@@ -66,22 +70,92 @@
     <!-- Scripts -->
     <script src="~/Library/jquery-3.3.1.min.js"></script>
     <script>
+
+        //input tag animation
         const inputTag1 = $('#usn');
         const inputTag2 = $('#psw');
+        const inputTag3 = $('#usnR');
+        const inputTag4 = $('#pswR');
+        const inputTag5 = $('#cfpswR');
+
         inputTag1.on('change', () => {
             const value = inputTag1.val().trim();
             value ? inputTag1.addClass('has-val') : inputTag1.removeClass('has-val');
         })
+
         inputTag2.on('change', () => {
             const value = inputTag2.val().trim();
             value ? inputTag2.addClass('has-val') : inputTag2.removeClass('has-val');
         })
 
+        inputTag3.on('change', () => {
+            const value = inputTag3.val().trim();
+            value ? inputTag3.addClass('has-val') : inputTag3.removeClass('has-val');
+        })
+
+        inputTag4.on('change', () => {
+            const value = inputTag4.val().trim();
+            value ? inputTag4.addClass('has-val') : inputTag4.removeClass('has-val');
+        })
+
+        inputTag5.on('change', () => {
+            const value = inputTag5.val().trim();
+            value ? inputTag5.addClass('has-val') : inputTag5.removeClass('has-val');
+        })
+
+        //login validate
+        inputTag1.on('input', () => {
+            if (inputTag1.val().trim().length != 0 && inputTag2.val().trim().length != 0) {
+                $('#log').removeAttr('disabled');
+            }
+        })
+
+        inputTag2.on('input', () => {
+            if (inputTag1.val().trim().length != 0 && inputTag2.val().trim().length != 0) {
+                $('#log').removeAttr('disabled');
+            }
+        })
+
+        //Register Validate
+        // hide alert
+        $('.PWnCFPW').hide();
+        $('.ippw').hide();
+
+        inputTag3.on('input', () => {
+            if (inputTag3.val().trim().length != 0 && inputTag4.val().trim().length != 0 && inputTag5.val().trim().length != 0) {
+                $('#reg').removeAttr('disabled');
+            }
+        })
+
+        inputTag4.on('input', () => {
+            const pw = inputTag4.val().trim();
+            const cfpw = inputTag5.val().trim();
+
+            pw != cfpw ? $('.PWnCFPW').show(200) : $('.PWnCFPW').hide(200);
+            if (inputTag3.val().trim().length != 0 && inputTag4.val().trim().length != 0 && inputTag5.val().trim().length != 0) {
+                $('#reg').removeAttr('disabled');
+            }
+        })
+
+        inputTag5.on('input', () => {
+            const pw = inputTag4.val().trim();
+            const cfpw = inputTag5.val().trim();
+
+            pw != cfpw ? $('.PWnCFPW').show(200) : $('.PWnCFPW').hide(200);
+            if (inputTag3.val().trim().length != 0 && inputTag4.val().trim().length != 0 && inputTag5.val().trim().length != 0) {
+                $('#reg').removeAttr('disabled');
+            }
+        })
+
+
+
         const loginSection = $('#login');
         const registerSection = $('#register');
+
         // init section
         loginSection.show();
         registerSection.hide();
+
         $('#toRegister').on('click', () => {
             loginSection.hide(1000);
             registerSection.show(2000);
